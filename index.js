@@ -66,7 +66,7 @@ function resetGame() {
     document.getElementById("reset").classList.add("hidden");
 
     // Reset background
-    document.body.style.background = "linear-gradient(to right, #00c6ff, #0072ff)";
+    document.body.style.background = "linear-gradient(to right, #0194b9, #8abdff, #ffdefb, hsl(308, 100%, 94%), #9ccaff, #0194b9)";
 }
 function createConfetti() {
     for (let i = 0; i < 50; i++) {

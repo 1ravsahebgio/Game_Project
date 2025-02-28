@@ -107,3 +107,16 @@ button.active {
         transform: translateY(100vh) rotate(360deg);
     }
 }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;
+        width: 90%;
+        margin-bottom: 150px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
