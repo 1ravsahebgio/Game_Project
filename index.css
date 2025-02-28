@@ -108,15 +108,68 @@ button.active {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
+
+/* Responsive Fix for Mobile */
+@media screen and (max-width: 480px) {
     .game-container {
+        width: 95%;
+        /* Adjust width for mobile */
         padding: 15px;
-        width: 90%;
         margin-bottom: 150px;
     }
 
     h2 {
         font-size: 20px;
     }
+
+    button {
+        width: 100%;
+    }
+
+    @keyframes bgAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    body {
+        background: linear-gradient(-45deg, #ff4e50, #fc913a, #f9d423, #16a085, #2980b9, #8e44ad);
+        background-size: 400% 400%;
+        animation: bgAnimation 10s ease infinite;
+        min-height: 100vh;
+        /* Mobile ke liye full height */
+        overflow-x: hidden;
+        /* Horizontal scroll hatane ke liye */
+    }
+
+}
+
+
+
+@keyframes bgAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(-45deg, #ff4e50, #fc913a, #f9d423, #16a085, #2980b9, #8e44ad);
+    background-size: 400% 400%;
+    animation: bgAnimation 10s ease infinite;
 }
