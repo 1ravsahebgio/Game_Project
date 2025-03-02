@@ -118,7 +118,7 @@ function checkGuess() {
 // Reset Game Function
 resetBtn.addEventListener("click", resetGame);
 function resetGame() {
-    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    secretNumber = Math.floor(Math.random() * 100) + 1;//solve problem let ki thi 
     attempts = 0;
     message.innerHTML = "";
     message.className = "";
