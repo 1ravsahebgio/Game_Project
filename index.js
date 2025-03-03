@@ -21,11 +21,11 @@ let victorySounds = [
     "song9.mp3", "song10.mp3", "song11.mp3", "song12rav.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3",
     "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song25.mp3", "song26.mp3", "Booyah.mp3"
 ];
+let firstAttemptSound = new Audio("song61st.mp3");
 
 // Special Victory Sounds
 let jethalalSound = new Audio("songjethalal.mp3"); // 70 Number
 let popatlalSound = new Audio("songpopatlal.mp3"); // 60 Number
-let firstAttemptSound = new Audio("song61st.mp3"); // 1st Attempt Sound
 
 // Funny Sounds
 let funnySounds = { 15: "funny1.mp3", 20: "funny2.mp3", 25: "funny3.mp3" };
@@ -39,6 +39,8 @@ guessInput.addEventListener("input", () => {
 // Prevent Keyboard from Hiding on Mobile
 guessInput.addEventListener("focus", (event) => {
     event.preventDefault();
+    guessInput.setAttribute("readonly", "readonly");
+    setTimeout(() => guessInput.removeAttribute("readonly"), 100);
 });
 
 guessInput.addEventListener("keyup", (event) => {
@@ -69,7 +71,7 @@ function checkGuess() {
         isFunnyPlaying = true;
         let funnySound = new Audio(funnySounds[attempts]);
         funnySound.volume = 1.0;
-        bgMusic.volume = 0.1;
+        bgMusic.volume = 0.2;
         funnySound.play();
         funnySound.onended = () => {
             isFunnyPlaying = false;
@@ -118,7 +120,7 @@ function checkGuess() {
 // Reset Game Function
 resetBtn.addEventListener("click", resetGame);
 function resetGame() {
-    secretNumber = Math.floor(Math.random() * 100) + 1;//solve problem let ki thi 
+    secretNumber = [60, 70][Math.floor(Math.random() * 2)];
     attempts = 0;
     message.innerHTML = "";
     message.className = "";
@@ -143,9 +145,9 @@ function createConfetti() {
         let b = Math.floor(Math.random() * 256);
         confetti.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.animationDuration = (Math.random() * 4 + 5) + "s";
+        confetti.style.animationDuration = (Math.random() * 2 + 3) + "s";
 
         document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 12000);
+        setTimeout(() => confetti.remove(), 7000);
     }
 }

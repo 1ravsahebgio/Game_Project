@@ -148,7 +148,7 @@ button:hover {
 /* Responsive Fix for Mobile */
 @media screen and (max-width: 480px) {
     .game-container {
-        width: 95%;
+        width: 100%;
         /* Adjust width for mobile */
         padding: 15px;
         margin-bottom: 150px;
