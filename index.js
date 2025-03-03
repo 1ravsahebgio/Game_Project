@@ -17,11 +17,10 @@ bgMusic.play();
 
 // Victory Sounds
 let victorySounds = [
-    "song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song7.mp3", "song8.mp3",
+    "song1.mp3", "song2.mp3", "song3.mp3", "song4.mp3", "song5.mp3", "song61st.mp3", "song7.mp3", "song8.mp3",
     "song9.mp3", "song10.mp3", "song11.mp3", "song12rav.mp3", "song13.mp3", "song14.mp3", "song15.mp3", "song16.mp3",
     "song20.mp3", "song21.mp3", "song22.mp3", "song23.mp3", "song25.mp3", "song26.mp3", "Booyah.mp3"
 ];
-let firstAttemptSound = new Audio("song61st.mp3");
 
 // Special Victory Sounds
 let jethalalSound = new Audio("songjethalal.mp3"); // 70 Number
@@ -37,10 +36,10 @@ guessInput.addEventListener("input", () => {
 });
 
 // Prevent Keyboard from Hiding on Mobile
-guessInput.addEventListener("focus", (event) => {
-    event.preventDefault();
-    guessInput.setAttribute("readonly", "readonly");
-    setTimeout(() => guessInput.removeAttribute("readonly"), 100);
+guessInput.addEventListener("focus", () => {
+    setTimeout(() => {
+        guessInput.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
 });
 
 guessInput.addEventListener("keyup", (event) => {
@@ -49,6 +48,13 @@ guessInput.addEventListener("keyup", (event) => {
         checkBtn.classList.add("active");
         setTimeout(() => checkBtn.classList.remove("active"), 200);
     }
+});
+
+// Keep Keyboard Open
+guessInput.addEventListener("blur", (event) => {
+    setTimeout(() => {
+        guessInput.focus();
+    }, 100);
 });
 
 // Check Button Event
@@ -90,9 +96,7 @@ function checkGuess() {
         bgMusic.volume = 0.2; // Lower volume when victory sound plays
 
         let victorySound;
-        if (attempts === 1) {
-            victorySound = firstAttemptSound;
-        } else if (userGuess === 70) {
+        if (userGuess === 70) {
             victorySound = jethalalSound;
         } else if (userGuess === 60) {
             victorySound = popatlalSound;
@@ -120,7 +124,7 @@ function checkGuess() {
 // Reset Game Function
 resetBtn.addEventListener("click", resetGame);
 function resetGame() {
-    secretNumber = [60, 70][Math.floor(Math.random() * 2)];
+    secretNumber = Math.floor(Math.random() * 100) + 1;
     attempts = 0;
     message.innerHTML = "";
     message.className = "";
@@ -145,9 +149,9 @@ function createConfetti() {
         let b = Math.floor(Math.random() * 256);
         confetti.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         confetti.style.left = Math.random() * window.innerWidth + "px";
-        confetti.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        confetti.style.animationDuration = (Math.random() * 4 + 5) + "s";
 
         document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 7000);
+        setTimeout(() => confetti.remove(), 12000);
     }
 }

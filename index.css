@@ -152,6 +152,7 @@ button:hover {
         /* Adjust width for mobile */
         padding: 15px;
         margin-bottom: 150px;
+        border-radius: 0px;
     }
 
     h2 {
